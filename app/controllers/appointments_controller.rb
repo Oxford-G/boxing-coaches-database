@@ -1,13 +1,14 @@
 class AppointmentsController < ApplicationController
-  before_action :set_appointment, only: [:create, :destroy]
+  before_action :set_user
+  before_action :set_appointment, only: [:destroy]
 
   def index
-    @appointments = Appointment.all
+    @appointments = @user.appointments
     json_response(@appointments)
   end
 
   def create
-    @appointment = Appointment.create!(appointment_params)
+    @appointment = @user.appointments.create!(appointment_params)
     json_response(@appointment, :created)
   end
 
@@ -21,8 +22,11 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.find(params[:id])
   end
 
-  def appointment_params
-    params.permit(:trainer_id, :user_id, :appointment_time, :status)
+  def set_user
+    @user = User.find(params[:user_id])
   end
 
+  def appointment_params
+    params.permit(:trainer_id, :user_id, :appointmentTime)
+  end
 end
