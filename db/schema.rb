@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_13_014625) do
+ActiveRecord::Schema.define(version: 2021_10_13_215738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
-    t.datetime "appointment_time"
-    t.string "status"
+    t.datetime "appointmentTime"
     t.bigint "user_id", null: false
     t.bigint "trainer_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -28,9 +27,9 @@ ActiveRecord::Schema.define(version: 2021_10_13_014625) do
 
   create_table "trainers", force: :cascade do |t|
     t.string "name"
-    t.string "fighting_style"
+    t.string "fightingStyle"
     t.text "description"
-    t.string "trainer_img"
+    t.string "trainerImg"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -40,6 +39,7 @@ ActiveRecord::Schema.define(version: 2021_10_13_014625) do
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
   end
 
   add_foreign_key "appointments", "trainers"
