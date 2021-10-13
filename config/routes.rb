@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  Rails.application.routes.draw do
+    resources :trainers, only: [:index, :show] do
+      resources :appointments, only: [:index, :create, :destroy]
+    end
+  
+    resources :users, only: [:create, :show, :destroy] do
+      resources :appointments, only: [:index, :create, :destroy]
+    end
+  end
 end
