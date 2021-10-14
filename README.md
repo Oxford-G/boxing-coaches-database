@@ -29,7 +29,7 @@ The project's goal was to create a book of appointment. The back-end should be a
 - user_id
 
 ## How to use it
-Base URL: https://fathomless-journey-92945.herokuapp.com
+Base URL: https://fathomless-journey-92945.herokuapp.com/
 
 ### End points
 
